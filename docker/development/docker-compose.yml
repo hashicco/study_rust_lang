@@ -1,0 +1,16 @@
+version: '2'
+services:
+  rust:
+    container_name: rust
+    image: rust
+    build:
+      context: ../../
+      dockerfile: ./docker/development/rust/Dockerfile
+      args:
+        APP_ROOT: /var/app
+        FILES: ./docker/development/rust/
+    env_file: ../../.env
+    volumes:
+      - '../../rust:/var/app'
+      - '../../.bash_profile:/root/.bash_profile'
+      # - '/etc/localtime:/etc/localtime:ro'
